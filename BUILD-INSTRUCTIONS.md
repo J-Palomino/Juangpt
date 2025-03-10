@@ -28,7 +28,7 @@ If you prefer to build locally, you can use one of the following approaches:
 
 ### Simplified Build (Using Pre-built Image)
 
-This approach uses the official Open WebUI image as a base and just adds your custom styles:
+This approach uses the official JuanGPT image as a base and just adds your custom styles:
 
 ```bash
 docker build -f Dockerfile.custom -t juangpt:latest .

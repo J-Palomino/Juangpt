@@ -1,13 +1,25 @@
-FROM ghcr.io/open-webui/open-webui:main
+FROM --platform=linux/amd64 ghcr.io/open-webui/open-webui:main
 
 # Copy our custom styles to the container
 COPY custom-styles.css /app/static/custom-styles.css
 COPY custom-styles-injector.js /app/static/custom-styles-injector.js
 
 # Inject our custom styles reference into the HTML
-RUN find /app -name "*.html" -type f -exec sed -i 's/<\/head>/<link rel="stylesheet" href="\/custom-styles.css"><script src="\/custom-styles-injector.js"><\/script><\/head>/' {} \;
+RUN find /app -name "*.html" -type f -exec sed -i 's/<\/head>/<link rel=\"stylesheet\" href=\"\/custom-styles.css\"><script src=\"\/custom-styles-injector.js\"><\/script><\/head>/' {} \;
+
+# Make sure the start script is executable and has correct line endings
+RUN if [ -f /app/backend/start.sh ]; then \
+      chmod +x /app/backend/start.sh && \
+      sed -i 's/\r$//' /app/backend/start.sh; \
+    fi
+
+# Set the shell explicitly
+SHELL ["/bin/bash", "-c"]
 
 # Label the image
 LABEL org.opencontainers.image.source="https://github.com/j-palomino/juangpt"
-LABEL org.opencontainers.image.description="Custom Open WebUI implementation with enhanced UI styling"
+LABEL org.opencontainers.image.description="Custom JuanGPT implementation with enhanced UI styling"
 LABEL org.opencontainers.image.licenses="MIT"
+
+# Set the command explicitly
+CMD ["/bin/bash", "/app/backend/start.sh"]
