@@ -26,10 +26,27 @@ ARG BUILD_HASH
 
 WORKDIR /app
 
+# Install Python and build dependencies needed for npm native modules
+RUN apk add --no-cache python3 make g++ gcc
+
+# Increase Node.js memory limit for the build process
+ENV NODE_OPTIONS="--max-old-space-size=12288"
+
+# Copy package files
 COPY package.json package-lock.json ./
+
 RUN npm ci
 
+# Create directories for custom styles
+RUN mkdir -p ./public
+
+# Copy custom styles
+COPY custom-styles.css ./public/
+COPY custom-styles-injector.js ./public/
+
+# Copy all files
 COPY . .
+
 ENV APP_BUILD_HASH=${BUILD_HASH}
 RUN npm run build
 

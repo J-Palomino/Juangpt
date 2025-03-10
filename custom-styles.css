@@ -1,0 +1,119 @@
+/* JuanGPT Custom Styles - Overlay for Open WebUI */
+
+/* Custom theme colors */
+:root {
+  --primary-color: #4a86e8;
+  --secondary-color: #6aa84f;
+  --accent-color: #e69138;
+  --background-color: #f3f6fc;
+  --text-color: #333333;
+  --chat-bubble-user: rgba(74, 134, 232, 0.1);
+  --chat-bubble-assistant: rgba(106, 168, 79, 0.1);
+}
+
+/* Dark mode overrides */
+.dark {
+  --background-color: #1e1e2e;
+  --text-color: #f8f8f2;
+  --chat-bubble-user: rgba(74, 134, 232, 0.2);
+  --chat-bubble-assistant: rgba(106, 168, 79, 0.2);
+}
+
+/* Custom header styling */
+.navbar {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom chat styling */
+.chat-message-user {
+  background-color: var(--chat-bubble-user) !important;
+  border-radius: 12px 12px 0 12px !important;
+}
+
+.chat-message-assistant {
+  background-color: var(--chat-bubble-assistant) !important;
+  border-radius: 12px 0 12px 12px !important;
+}
+
+/* Custom button styling */
+button.primary {
+  background-color: var(--primary-color) !important;
+  transition: all 0.3s ease;
+}
+
+button.primary:hover {
+  background-color: var(--accent-color) !important;
+  transform: translateY(-2px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+/* Custom animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.logo {
+  animation: pulse 2s infinite;
+}
+
+/* Custom font styling */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Custom card styling */
+.card {
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Custom input styling */
+input, textarea, select {
+  border-radius: 8px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 2px rgba(74, 134, 232, 0.2) !important;
+}
+
+/* JuanGPT branding */
+.juangpt-branding {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border-radius: 4px;
+  font-size: 12px;
+  z-index: 1000;
+}

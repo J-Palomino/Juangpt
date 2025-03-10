@@ -1,3 +1,22 @@
+# JuanGPT - Custom Open WebUI Implementation
+
+This is a customized version of Open WebUI with enhanced UI styling and optimized Docker configuration for faster deployments.
+
+## Features
+
+- Custom UI styling with modern color scheme and animations
+- Optimized Docker build with increased memory allocation for Node.js
+- Pre-built image available on GitHub Container Registry (ghcr.io)
+- All original Open WebUI features included
+
+## Quick Start
+
+```bash
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v juangpt-data:/app/backend/data --name juangpt --restart always ghcr.io/j-palomino/juangpt:latest
+```
+
+---
+
 # Open WebUI 👋
 
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
